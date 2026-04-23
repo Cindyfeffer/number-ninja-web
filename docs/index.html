@@ -190,6 +190,27 @@
       0% { left: 50%; top: 50%; opacity: 1; transform: scale(1) rotate(0deg); }
       100% { left: 0; top: 10%; opacity: 0; transform: scale(0.5) rotate(720deg); }
     }
+
+    .bunny {
+      position: fixed;
+      bottom: 20%;
+      font-size: 4rem;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .bunny.hopping {
+      animation: hop 3s ease-in-out;
+    }
+
+    @keyframes hop {
+      0% { left: -10%; opacity: 1; transform: translateY(0); }
+      25% { transform: translateY(-20px); }
+      50% { transform: translateY(0); }
+      75% { transform: translateY(-20px); }
+      100% { left: 110%; opacity: 0; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -228,6 +249,8 @@
 
   <div class="ninja-star" id="ninjaStar">⭐</div>
 
+  <div class="bunny" id="bunny">🐰</div>
+
   <script>
     const secretMin = 1;
     const secretMax = 10;
@@ -265,6 +288,11 @@
         confetti.appendChild(piece);
       }
       setTimeout(clearConfetti, 1500);
+
+      // Bunny hopping
+      const bunny = document.getElementById('bunny');
+      bunny.classList.add('hopping');
+      setTimeout(() => bunny.classList.remove('hopping'), 3000);
     }
 
     function clearConfetti() {
