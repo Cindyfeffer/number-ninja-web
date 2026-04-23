@@ -327,7 +327,12 @@
         guessInput.disabled = true;
         guessButton.disabled = true;
         showConfetti();
+        return; // Don't clear input on win
       }
+
+      // Clear input on wrong guess
+      guessInput.value = '';
+      guessInput.focus();
     }
 
     guessButton.addEventListener('click', checkGuess);
