@@ -164,6 +164,23 @@
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(250px) rotate(720deg); opacity: 0; }
     }
+
+    .ninja-star {
+      position: fixed;
+      font-size: 3rem;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .ninja-star.flying {
+      animation: fly 1s ease-out;
+    }
+
+    @keyframes fly {
+      0% { left: 50%; top: 50%; opacity: 1; transform: scale(1) rotate(0deg); }
+      100% { left: 0; top: 10%; opacity: 0; transform: scale(0.5) rotate(720deg); }
+    }
   </style>
 </head>
 <body>
@@ -198,6 +215,8 @@
       </div>
     </div>
   </div>
+
+  <div class="ninja-star" id="ninjaStar">⭐</div>
 
   <script>
     const secretMin = 1;
@@ -243,6 +262,11 @@
     }
 
     function checkGuess() {
+      // Throw ninja star
+      const star = document.getElementById('ninjaStar');
+      star.classList.add('flying');
+      setTimeout(() => star.classList.remove('flying'), 1000);
+
       const guessValue = parseInt(guessInput.value, 10);
       if (Number.isNaN(guessValue)) {
         message.textContent = 'Type a whole number between 1 and 10.';
