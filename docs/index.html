@@ -201,15 +201,19 @@
     }
 
     .bunny.hopping {
-      animation: hop 3s ease-in-out;
+      animation: hop 5s ease-in-out;
     }
 
     @keyframes hop {
-      0% { left: -10%; opacity: 1; transform: translateY(0); }
-      25% { transform: translateY(-20px); }
-      50% { transform: translateY(0); }
-      75% { transform: translateY(-20px); }
-      100% { left: 110%; opacity: 0; transform: translateY(0); }
+      0% { left: -10%; opacity: 1; transform: translateY(0) scale(1); }
+      12.5% { transform: translateY(-30px) scale(1.1); }
+      25% { transform: translateY(0) scale(1); }
+      37.5% { transform: translateY(-30px) scale(1.1); }
+      50% { transform: translateY(0) scale(1); }
+      62.5% { transform: translateY(-30px) scale(1.1); }
+      75% { transform: translateY(0) scale(1); }
+      87.5% { transform: translateY(-30px) scale(1.1); }
+      100% { left: 110%; opacity: 0; transform: translateY(0) scale(0.8); }
     }
   </style>
 </head>
